@@ -11,7 +11,7 @@ public:
     UniquePtr(UniquePtr &ptr);
     T get();
     T &operator*();
-    T &operator=();
+    T &operator=(UniquePtr &ptr);
 
 private:
     T *_p;

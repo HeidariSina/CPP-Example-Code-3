@@ -17,7 +17,7 @@ UniquePtr<T>::~UniquePtr()
 
 // Copy
 template <typename T>
-UniquePtr<T>::UniquePtr(UniquePtr &ptr)
+UniquePtr<T>::UniquePtr(UniquePtr<T> &ptr)
 {
     _p = ptr.get();
 }
@@ -37,5 +37,9 @@ T &UniquePtr<T>::operator*()
 }
 
 // OP =
-// template <typename T>
-// T &UniquePtr<T>::operator=() {}
+template <typename T>
+T &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
+{
+    _p = ptr.get();
+    ptr
+}
