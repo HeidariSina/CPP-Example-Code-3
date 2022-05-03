@@ -59,3 +59,12 @@ void UniquePtr<T>::reset()
 {
     _p = nullptr;
 }
+
+// Reset 2
+template <typename T>
+UniquePtr<T> UniquePtr<T>::reset(T *p)
+{
+    delete _p;
+    _p = p;
+    return *this;
+}

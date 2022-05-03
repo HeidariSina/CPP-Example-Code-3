@@ -14,6 +14,7 @@ public:
     T *operator->();
     UniquePtr<T> &operator=(UniquePtr &ptr);
     void reset();
+    UniquePtr<T> reset(T *p);
 
 private:
     T *_p;

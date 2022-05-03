@@ -63,13 +63,13 @@ TEST(HW4Test, TEST6)
     EXPECT_EQ(ptr.get(), nullptr);
 }
 
-// TEST(HW4Test, TEST7)
-// {
-//     UniquePtr<std::string> ptr{new std::string{"hello world!"}};
-//     EXPECT_EQ(ptr->length(), 12);
-//     ptr.reset(new std::string{"nice job!"});
-//     EXPECT_EQ(*ptr, "nice job!");
-// }
+TEST(HW4Test, TEST7)
+{
+    UniquePtr<std::string> ptr{new std::string{"hello world!"}};
+    EXPECT_EQ(ptr->length(), 12);
+    ptr.reset(new std::string{"nice job!"});
+    EXPECT_EQ(*ptr, "nice job!");
+}
 
 // TEST(HW4Test, TEST8)
 // {
