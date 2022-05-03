@@ -1,4 +1,3 @@
-#include "unique_ptr.h"
 
 // Constructor
 template <typename T>
@@ -6,7 +5,7 @@ UniquePtr<T>::UniquePtr() : _p{nullptr} {};
 
 // Constructor
 template <typename T>
-UniquePtr<T>::UniquePtr(T *p){*_p = p};
+UniquePtr<T>::UniquePtr(T *p) : _p{p} {}
 
 // Destructor
 template <typename T>
@@ -24,7 +23,7 @@ UniquePtr<T>::UniquePtr(UniquePtr<T> &ptr)
 
 // Get
 template <typename T>
-T UniquePtr<T>::get()
+T *UniquePtr<T>::get()
 {
     return _p;
 }
@@ -38,8 +37,18 @@ T &UniquePtr<T>::operator*()
 
 // OP =
 template <typename T>
-T &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
+UniquePtr<T> &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
 {
+    if (this == &ptr)
+        return *this;
+    delete _p;
     _p = ptr.get();
-    ptr
+    return *this;
+}
+
+// OP ->
+template <typename T>
+T *UniquePtr<T>::operator->()
+{
+    return _p;
 }

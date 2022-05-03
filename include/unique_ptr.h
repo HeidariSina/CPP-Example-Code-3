@@ -9,12 +9,21 @@ public:
     UniquePtr(T *p);
     ~UniquePtr();
     UniquePtr(UniquePtr &ptr);
-    T get();
+    T *get();
     T &operator*();
-    T &operator=(UniquePtr &ptr);
+    T *operator->();
+    UniquePtr<T> &operator=(UniquePtr &ptr);
 
 private:
     T *_p;
 };
 
+template <typename T>
+UniquePtr<T> make_unique(T p)
+{
+    UniquePtr<T> ptr{new T{p}};
+    return ptr;
+}
+
+#include "unique_ptr.hpp"
 #endif // UNIQUE_PTR
