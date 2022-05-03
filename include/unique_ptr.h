@@ -13,6 +13,7 @@ public:
     T &operator*();
     T *operator->();
     UniquePtr<T> &operator=(UniquePtr &ptr);
+    void reset();
 
 private:
     T *_p;

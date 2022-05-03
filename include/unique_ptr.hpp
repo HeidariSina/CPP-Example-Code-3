@@ -52,3 +52,10 @@ T *UniquePtr<T>::operator->()
 {
     return _p;
 }
+
+// Reset
+template <typename T>
+void UniquePtr<T>::reset()
+{
+    _p = nullptr;
+}
