@@ -10,12 +10,14 @@ SharedPtr<T>::SharedPtr(T *p) : _p{p}, cnt{new int(1)} {}
 template <typename T>
 SharedPtr<T>::~SharedPtr()
 {
-    cnt--;
-    if (cnt == 0)
+    (*cnt)--;
+    if (*cnt == 0)
     {
-        if (_p == nullptr)
+        if (nullptr != _p)
+        {
             delete _p;
-        delete cnt;
+            _p = nullptr;
+        }
     }
 }
 
@@ -25,8 +27,7 @@ SharedPtr<T>::SharedPtr(SharedPtr<T> &ptr)
 {
     _p = ptr._p;
     cnt = ptr.cnt;
-    if (nullptr != ptr._p)
-        (*cnt)++;
+    (*cnt)++;
 }
 
 // Get
@@ -52,8 +53,7 @@ SharedPtr<T> &SharedPtr<T>::operator=(SharedPtr<T> &ptr)
     delete _p;
     _p = ptr._p;
     cnt = ptr.cnt;
-    if (nullptr != ptr._p)
-        (*cnt)++;
+    (*cnt)++;
     return *this;
 }
 
