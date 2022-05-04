@@ -14,18 +14,21 @@ public:
     T *operator->();
     SharedPtr<T> &operator=(SharedPtr &ptr);
     void reset();
-    SharedPtr<T> reset(T *p);
+    void reset(T *p);
+    explicit operator bool();
+    int use_count();
 
 private:
+    int *cnt;
     T *_p;
 };
 
-// template <typename T>
-// SharedPtr<T> make_unique(T p)
-// {
-//     SharedPtr<T> ptr{new T{p}};
-//     return ptr;
-// }
+template <typename T>
+SharedPtr<T> make_shared(T p)
+{
+    SharedPtr<T> ptr{new T{p}};
+    return ptr;
+}
 
 #include "shared_ptr.hpp"
 

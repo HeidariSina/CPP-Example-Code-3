@@ -18,7 +18,7 @@ UniquePtr<T>::~UniquePtr()
 template <typename T>
 UniquePtr<T>::UniquePtr(UniquePtr<T> &ptr)
 {
-    _p = ptr.get();
+    _p = ptr._p;
 }
 
 // Get
@@ -42,7 +42,7 @@ UniquePtr<T> &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
     if (this == &ptr)
         return *this;
     delete _p;
-    _p = ptr.get();
+    _p = ptr._p;
     return *this;
 }
 
@@ -63,12 +63,10 @@ void UniquePtr<T>::reset()
 
 // Reset 2
 template <typename T>
-UniquePtr<T> UniquePtr<T>::reset(T *p)
+void UniquePtr<T>::reset(T *p)
 {
     delete _p;
-    _p = nullptr;
     _p = p;
-    return _p;
 }
 
 // Release
