@@ -1,4 +1,3 @@
-
 // Constructor
 template <typename T>
 UniquePtr<T>::UniquePtr() : _p{nullptr} {};
@@ -11,6 +10,7 @@ UniquePtr<T>::UniquePtr(T *p) : _p{p} {}
 template <typename T>
 UniquePtr<T>::~UniquePtr()
 {
+    delete _p;
     _p = nullptr;
 }
 
@@ -57,6 +57,7 @@ T *UniquePtr<T>::operator->()
 template <typename T>
 void UniquePtr<T>::reset()
 {
+    delete _p;
     _p = nullptr;
 }
 
@@ -65,6 +66,25 @@ template <typename T>
 UniquePtr<T> UniquePtr<T>::reset(T *p)
 {
     delete _p;
+    _p = nullptr;
     _p = p;
-    return *this;
+    return _p;
+}
+
+// Release
+template <typename T>
+T *UniquePtr<T>::release()
+{
+    T *ptr{_p};
+    _p = nullptr;
+    return ptr;
+}
+
+// Bool Op
+template <typename T>
+UniquePtr<T>::operator bool()
+{
+    if (_p == nullptr)
+        return false;
+    return true;
 }

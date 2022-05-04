@@ -15,6 +15,8 @@ public:
     UniquePtr<T> &operator=(UniquePtr &ptr);
     void reset();
     UniquePtr<T> reset(T *p);
+    T *release();
+    explicit operator bool();
 
 private:
     T *_p;
