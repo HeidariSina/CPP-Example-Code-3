@@ -8,11 +8,11 @@ public:
     UniquePtr();
     UniquePtr(T *p);
     ~UniquePtr();
-    UniquePtr(UniquePtr &ptr);
+    UniquePtr(UniquePtr &ptr) = delete;
     T *get();
     T &operator*();
     T *operator->();
-    UniquePtr<T> &operator=(UniquePtr &ptr);
+    UniquePtr<T> &operator=(UniquePtr &ptr) = delete;
     void reset();
     void reset(T *p);
     T *release();
@@ -25,8 +25,7 @@ private:
 template <typename T>
 UniquePtr<T> make_unique(T p)
 {
-    UniquePtr<T> ptr{new T{p}};
-    return ptr;
+    return UniquePtr<T>{new T{p}};
 }
 
 #include "unique_ptr.hpp"

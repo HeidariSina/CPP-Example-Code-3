@@ -15,11 +15,11 @@ UniquePtr<T>::~UniquePtr()
 }
 
 // Copy
-template <typename T>
-UniquePtr<T>::UniquePtr(UniquePtr<T> &ptr)
-{
-    _p = ptr._p;
-}
+// template <typename T>
+// UniquePtr<T>::UniquePtr(UniquePtr<T> &ptr)
+// {
+//     _p = ptr._p;
+// }
 
 // Get
 template <typename T>
@@ -36,15 +36,15 @@ T &UniquePtr<T>::operator*()
 }
 
 // OP =
-template <typename T>
-UniquePtr<T> &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
-{
-    if (this == &ptr)
-        return *this;
-    delete _p;
-    _p = ptr._p;
-    return *this;
-}
+// template <typename T>
+// UniquePtr<T> &UniquePtr<T>::operator=(UniquePtr<T> &ptr)
+// {
+//     if (this == &ptr)
+//         return *this;
+//     delete _p;
+//     _p = ptr._p;
+//     return *this;
+// }
 
 // OP ->
 template <typename T>
