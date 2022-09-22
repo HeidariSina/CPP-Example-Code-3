@@ -1,16 +1,3 @@
-# Advanced Programming - HW4
-<p  align="center"> <b>Homework 4 - Spring 2022 Semester <br> Deadline: Tuesday Ordibehesht 13st - 11:59 pm</b> </p>
-
-## Outline
-
-In this homework we are going to implement our own smart pointers. Specifically we want to implement our custom `SharedPtr` and `UniquePtr` classes with almost all functionality of std::shared_ptr and std::unique_ptr.
-
-We want to implement 2 class templates called `UniquePtr` and `SharedPtr` with the functions described in the following sections.
-
-**note.** You are only allowed  to alter `unique_ptr.hpp/h`, `shared_ptr.hpp/h` and only the debug section of `main.cpp`. 
-
-</br>
-
 # UniquePtr Class
 Define a template class named `UniquePtr` and add the following functions to the class.
 
